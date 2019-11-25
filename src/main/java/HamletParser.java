@@ -1,9 +1,11 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by thook on 10/7/15.
@@ -42,27 +44,40 @@ public class HamletParser {
         return hamletData;
     }
 
+//    public Boolean findHoratio() {
+//        Pattern pHamlet = Pattern.compile("Horatio");
+//        Matcher mHoratio = pHamlet.matcher(hamletData);
+//        return mHoratio.find();
+//    }
+
     public Boolean findHoratio() {
-        Pattern pHamlet = Pattern.compile("Horatio");
+        Pattern pHamlet = Pattern.compile("horatio", Pattern.CASE_INSENSITIVE);
         Matcher mHoratio = pHamlet.matcher(hamletData);
         return mHoratio.find();
+        // 128: HORATIO
+        //  31: Horatio
+        // 159: Total occurrences
     }
 
     public Boolean findHamlet() {
-        Pattern pHamlet = Pattern.compile("Hamlet");
+        Pattern pHamlet = Pattern.compile("Hamlet", Pattern.CASE_INSENSITIVE);
         Matcher mHamlet = pHamlet.matcher(hamletData);
         return mHamlet.find();
     }
 
     public String changeHoratioToTariq() {
-        Pattern pHamlet = Pattern.compile("Horatio");
-        Matcher mHoratio = pHamlet.matcher(hamletData);
-        return mHoratio.replaceAll("Tariq");
+        String text = hamletData;
+        Pattern pHoratio1 = Pattern.compile("horatio", Pattern.CASE_INSENSITIVE);
+        Matcher mHoratio1 = pHoratio1.matcher(text);
+        return mHoratio1.replaceAll("Tariq");
+
+
     }
 
     public String changeHamletToLeon() {
-        Pattern pHamlet = Pattern.compile("Hamlet");
-        Matcher mHamlet = pHamlet.matcher(hamletData);
+        String text = hamletData;
+        Pattern pHamlet = Pattern.compile("hamlet\\S*", Pattern.CASE_INSENSITIVE);
+        Matcher mHamlet = pHamlet.matcher(text);
         return mHamlet.replaceAll("Leon");
     }
 

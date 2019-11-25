@@ -23,19 +23,24 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
-
         String changedFile = hamletParser.changeHamletToLeon();
+        System.out.println(changedFile);
         Assert.assertFalse(changedFile.contains("Hamlet"));
+        Assert.assertFalse(Pattern.matches("Hamlet","Horatio Horatio Horatio" ));
     }
 
     @Test
     public void testChangeHoratioToTariq() {
         String changedFile = hamletParser.changeHoratioToTariq();
+        System.out.println(changedFile);
         Assert.assertFalse(changedFile.contains("Horatio"));
+        Assert.assertFalse(changedFile.contains("HORATIO"));
+
     }
 
     @Test
     public void testFindHoratio() {
+//        System.out.println(hamletParser.findHoratio());
         Assert.assertTrue(hamletParser.findHoratio());
         Assert.assertFalse(Pattern.matches("Horatio","Hamlet Hamlet Hamlet" ));
     }
@@ -43,6 +48,6 @@ public class HamletParserTest {
     @Test
     public void testFindHamlet() {
         Assert.assertTrue(hamletParser.findHamlet());
-        Assert.assertFalse(Pattern.matches("Hamlet","Horatio Horatio Horatio" ));
+        Assert.assertFalse(Pattern.matches("Hamlet", "Horatio Horatio Horatio"));
     }
 }
