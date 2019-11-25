@@ -1,11 +1,9 @@
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 /**
  * Created by thook on 10/7/15.
@@ -32,7 +30,6 @@ public class HamletParser {
             }
             scanner.close();
         } catch (IOException e) {
-//        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return result.toString();
@@ -44,19 +41,10 @@ public class HamletParser {
         return hamletData;
     }
 
-//    public Boolean findHoratio() {
-//        Pattern pHamlet = Pattern.compile("Horatio");
-//        Matcher mHoratio = pHamlet.matcher(hamletData);
-//        return mHoratio.find();
-//    }
-
     public Boolean findHoratio() {
         Pattern pHamlet = Pattern.compile("horatio", Pattern.CASE_INSENSITIVE);
         Matcher mHoratio = pHamlet.matcher(hamletData);
         return mHoratio.find();
-        // 128: HORATIO
-        //  31: Horatio
-        // 159: Total occurrences
     }
 
     public Boolean findHamlet() {
@@ -70,8 +58,6 @@ public class HamletParser {
         Pattern pHoratio1 = Pattern.compile("horatio", Pattern.CASE_INSENSITIVE);
         Matcher mHoratio1 = pHoratio1.matcher(text);
         return mHoratio1.replaceAll("Tariq");
-
-
     }
 
     public String changeHamletToLeon() {

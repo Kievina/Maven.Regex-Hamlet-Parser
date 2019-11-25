@@ -24,17 +24,20 @@ public class HamletParserTest {
     @Test
     public void testChangeHamletToLeon() {
         String changedFile = hamletParser.changeHamletToLeon();
-        System.out.println(changedFile);
+//        System.out.println(changedFile);
         Assert.assertFalse(changedFile.contains("Hamlet"));
-        Assert.assertFalse(Pattern.matches("Hamlet","Horatio Horatio Horatio" ));
+        Assert.assertFalse(changedFile.contains("HAMLET"));
+        Assert.assertTrue(changedFile.contains("Leon"));
     }
 
     @Test
     public void testChangeHoratioToTariq() {
         String changedFile = hamletParser.changeHoratioToTariq();
-        System.out.println(changedFile);
+//        System.out.println(changedFile);
         Assert.assertFalse(changedFile.contains("Horatio"));
         Assert.assertFalse(changedFile.contains("HORATIO"));
+        Assert.assertTrue(changedFile.contains("Tariq"));
+
 
     }
 
